@@ -42,17 +42,29 @@ else {
     //def duration = OpenDate - CloseDate
     //log.debug( "result: ${result}")
     
-    def pattern = "d.M.yyyy hh:mm"
+    def pattern = "dd.MM.yyyy hh:mm"
 	def input = "17.06.2020 12:23"
- 
+	def input2 = "19.06.2020 15:00"
+
 	def date = new SimpleDateFormat(pattern).parse(input)
-   log.debug( "das date: ${date}")  
-   
-   
-   def String pattern = "dd-MM-yyyy";
-   SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-   def String simpletime = simpleDateFormat.format(input);
-      log.debug( "TOKA date: ${simpletime}") 
+	def date2 = new SimpleDateFormat(pattern).parse(input2)
+    def minus=date2-date
+    log.debug( "First date: ${date}, SECOND date :${date2}")  
+    log.debug( "minus date: ${minus}") 
+    
+    def duration = TimeCategory.minus(date2, date)
+    log.debug( "duration date: ${duration}")
+    def hours=duration.getHours()
+    def days=duration.getDays()
+    log.debug( "duration hours: ${hours}")
+    
+    def totalhours= days*24 + hours
+    log.debug( "duration totalhours: ${totalhours}")
+    
+   //def String pattern = "dd-MM-yyyy";
+   //SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+   //def String simpletime = simpleDateFormat.format(input);
+   //   log.debug( "TOKA date: ${simpletime}") 
     
 }
     
